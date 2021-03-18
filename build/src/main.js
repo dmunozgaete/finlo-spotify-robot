@@ -65,13 +65,11 @@ let argv = yargs
         .option('username', {
         alias: 'u',
         type: "string",
-        default: 'dmunozgaete@gmail.com',
         describe: "username for spotify account",
         demandOption: true,
     })
         .option('password', {
         alias: 'p',
-        default: '123.Momia3s',
         type: "string",
         describe: "password for spotify account",
         demandOption: true,
@@ -83,14 +81,12 @@ let argv = yargs
     return yargs
         .option('username', {
         alias: 'u',
-        default: 'dmunozgaete@gmail.com',
         type: "string",
         describe: "username for spotify account",
         demandOption: true
     })
         .option('password', {
         alias: 'p',
-        default: '123.Momia3s',
         type: "string",
         describe: "password for spotify account",
         demandOption: true,
