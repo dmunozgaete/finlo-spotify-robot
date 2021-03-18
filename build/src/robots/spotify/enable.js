@@ -4,7 +4,6 @@ const tslib_1 = require("tslib");
 const path = require("path");
 const puppeteer = require("puppeteer");
 exports.default = (username, password) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
-    console.log(username, password);
     const browser = yield puppeteer.launch();
     const page = yield browser.newPage();
     yield Promise.all([
@@ -20,13 +19,18 @@ exports.default = (username, password) => tslib_1.__awaiter(void 0, void 0, void
         page.click("#login-button"),
         page.waitForSelector("a[href=\"/account/profile/\"]"),
     ]);
-    yield page.pdf({
-        path: path.resolve(__dirname, 'enable-0.pdf')
-    });
     yield Promise.all([
         page.goto("https://www.spotify.com/us/account/overview"),
         page.waitForNavigation(),
         page.waitForSelector("article#your-plan"),
+    ]);
+    yield Promise.all([
+        page.click("article#your-plan button"),
+        page.waitForSelector("div[role=\"dialog\"] button[type=\"submit\"]"),
+    ]);
+    yield Promise.all([
+        page.click("div[role=\"dialog\"] button[type=\"submit\"]"),
+        page.waitForNavigation(),
     ]);
     yield page.pdf({
         path: path.resolve(__dirname, 'enable.pdf')

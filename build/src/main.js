@@ -65,17 +65,18 @@ let argv = yargs
         .option('username', {
         alias: 'u',
         type: "string",
+        default: 'dmunozgaete@gmail.com',
         describe: "username for spotify account",
         demandOption: true,
     })
         .option('password', {
         alias: 'p',
+        default: '123.Momia3s',
         type: "string",
         describe: "password for spotify account",
         demandOption: true,
     });
 }, (argv) => {
-    console.log(argv);
     robots.spotify_disable(argv.username, argv.password);
 })
     .command(availableRobots.spotify.enable.command, availableRobots.spotify.enable.description, (yargs) => {
@@ -95,8 +96,6 @@ let argv = yargs
         demandOption: true,
     });
 }, (argv) => {
-    console.log('ENABLE!');
-    console.log(argv);
     robots.spotify_enable(argv.username, argv.password);
 })
     .demandCommand()
